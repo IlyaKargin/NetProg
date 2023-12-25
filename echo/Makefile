@@ -1,4 +1,4 @@
-PHONY: all clean format
+.PHONY: all clean format
 
 PROJECT = echo.exec
 
@@ -13,15 +13,15 @@ OBJECTS := $(SOURCES:%.cpp=%.o)
 all : $(PROJECT)
 
 $(PROJECT) : $(OBJECTS)
-$(CXX) $^ $(LDFLAGS) -o $@
+  $(CXX) $^ $(LDFLAGS) -o $@
 
 %.o : %.cpp
-$(CXX) -c $(CXXFLAGS) $< -o $@
+  $(CXX) -c $(CXXFLAGS) $< -o $@
 
 $(OBJECTS) : $(HEADERS)
 
 format:
-astyle *.cpp *.h
+  astyle *.cpp *.h
 
 clean:
-rm -f $(PROJECT) *.o
+  rm -f $(PROJECT) *.o
